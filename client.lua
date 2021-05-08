@@ -70,7 +70,6 @@ RegisterCommand(srkPhoto.clothescommand,function(source,args)
             end
             local counter = srkPhoto.commandConfigs[args[2]][2]
             while counter > 0 do
-                counter = counter-1
                 if string.match(srkPhoto.commandConfigs[args[2]][1],'p') then
                     local propIndex,_ = string.gsub(srkPhoto.commandConfigs[args[2]][1],'p','')
                     SetPedPropIndex(clonePed,tonumber(propIndex),counter,0,true)
@@ -79,6 +78,7 @@ RegisterCommand(srkPhoto.clothescommand,function(source,args)
                 end
                 Citizen.Wait(1000)
                 TriggerServerEvent('TakeScreenShotSRK',srkPhoto.commandConfigs[args[2]][1]..selectedSexo3..'('..counter..')')
+                counter = counter-1
             end
             DeleteEntity(clonePed)
             destroyCam()
